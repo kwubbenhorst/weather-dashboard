@@ -173,7 +173,7 @@ function fetchWeatherData(selectedCity) {
       };
   
       var dateTimeFormatted = dayjs(timeZoneResponse.formatted)
-        .format("MMMM DD, YYYY HH:mm:ss");
+        .format("MMMM DD, YYYY   HH:mm:ss");
       var zoneAbbreviation = timeZoneResponse.abbreviation;
   
       var currentDateTimeZone = {
@@ -272,7 +272,7 @@ function fetchWeatherData(selectedCity) {
 function renderWeatherData(selectedCity, currentDateTimeZone, weatherData) {
     renderCurrentWeather(
       selectedCity.name,
-      currentDateTimeZone.dateTimeFormatted + ' ' + currentDateTimeZone.zoneAbbreviation,
+      currentDateTimeZone.dateTimeFormatted + '  ' + currentDateTimeZone.zoneAbbreviation,
       weatherData.currentWeatherIcon,
       weatherData.currentTemp,
       weatherData.currentWind,
