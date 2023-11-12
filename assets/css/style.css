@@ -110,7 +110,7 @@
     list-style: none;
   }
   
-  .list-item {
+  .list-group-item {
     margin-bottom: 10px;
     padding: 1.5%;
     border-radius: var(--border-radius);
@@ -121,6 +121,18 @@
   
   .list-item:hover {
     background-color: var(--dark);
+  }
+
+  .prev-city-item {
+    display: block;
+    background-color: red;
+    color: black;
+}
+
+  .prev-city-btn {
+    display: block;
+    background-color: blue;
+    color: white;
   }
   
   .status-icon {
