@@ -192,7 +192,7 @@ function fetchWeatherData(selectedCity) {
         //The map method is then used to transform each selected item into a new object with specific properties extracted and formatted. The new objects are collected into a new array ('selectFiveDayArray'), which contains just the properties I am interested in rendering.
         // The filter function is passed two parameters: the current array item (currentItem) and its index (index). The condition checks if the index is an 8th item (starting from index 5)
         var fullFiveDayArray = fiveDayForecastResponse.list.filter(function (currentItem, index) {
-          return i % 8 === 5;  //The return is these 8th items(starting from index 5 -- there will be five data objects in all because the original array length was 40). This return is stored in a new variable fullFiveDayArray. Although 4/5s of the fiveDayForecastResponse has been filtered out the array is still "full" because there is a lot of data in there we don't need to render
+          return index % 8 === 5;  //The return is these 8th items(starting from index 5 -- there will be five data objects in all because the original array length was 40). This return is stored in a new variable fullFiveDayArray. Although 4/5s of the fiveDayForecastResponse has been filtered out the array is still "full" because there is a lot of data in there we don't need to render
         });
        
         //The map method iterates through the array of five full data objects (exhaustive weather forecast info for the next five days at 3pm), and creates a new data object consisting just of the properties and values we want to render to the fiveDayForecast cards. This data object is stored in the variable selectFiveDayArray
