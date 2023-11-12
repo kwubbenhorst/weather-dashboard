@@ -151,7 +151,8 @@ function fetchWeatherData(selectedCity) {
 
     var currentWeatherURL = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=' + apiKeyOWM + '&units=metric' + '&lang=en';
     var fiveDayForecastURL = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + apiKeyOWM + '&cnt=40&units=metric&lang=en';
-    var currentDateTimeZoneURL = 'http://api.timezonedb.com/v2.1/get-time-zone?key=' + apiKeyTZDB + '&format=json&by=position&lat=' + lat + '&lng=' + lon;
+    var currentDateTimeZoneURL = 'https://api.timezonedb.com/v2.1/get-time-zone?key=' + apiKeyTZDB + '&format=json&by=position&lat=' + lat + '&lng=' + lon;
+
   
     Promise.all([
       fetch(currentWeatherURL).then(function (response) {
