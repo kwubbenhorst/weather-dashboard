@@ -17,7 +17,30 @@ This web application is deployed and ready for use on the World Wide Web.  Pleas
 
 The following screenshots provide a visual guide through the various features:
 
-## Credits
+Here is the app with a well populated previous searches are. I can use the clear button to clear all these items out of local storage.
+![Screen Shot 0](https://github.com/kwubbenhorst/weather-dashboard/assets/140316693/79799b3a-0843-4051-b183-dd3fef30ccaa)
+
+I refresh the page, and now I am presented with the landing screen, showing the current weather and five-day forecast for Guelph, Ontario, Canada. All the previous searches have been cleared.
+![Screen Shot 1](https://github.com/kwubbenhorst/weather-dashboard/assets/140316693/2b3b72bd-f3ad-410e-81ba-2282cd618a20)
+
+I want to search the weather in Porto, so I type Porto into the form input field and click the search button.  I am presented with a prompt asking me which of five locations with the name "Porto" I mean.
+![Screen Shot 2](https://github.com/kwubbenhorst/weather-dashboard/assets/140316693/1b7122d7-77d6-4410-a50b-95c17bca74fc)
+
+I pick Porto, Portugal.  Immediately the dashboard is updated with the date time and timezone for Porto, the current weather, and the five-day forecast.  A button is also created for Porto in the previous searches list.
+![Screen Shot 3](https://github.com/kwubbenhorst/weather-dashboard/assets/140316693/83e1a492-ec07-4155-8999-e0c1dd8e15eb)
+
+I have carried on searching for different cities and now I have a more fully populated previous searches list again. The inspector is open on this screenshot and shows various console log messages to track progress through the program at various stages. Thankfully there are no errors.
+![Screen Shot 5](https://github.com/kwubbenhorst/weather-dashboard/assets/140316693/b0998976-fb07-44df-9602-b9bca6bc49f8)
+
+This page shows the responsive design of the application and the rest of what is logged in the console as I have added the various cities.
+![Screen Shot 6](https://github.com/kwubbenhorst/weather-dashboard/assets/140316693/de7135bf-0653-48e6-ad29-c1d1c5a0e6f5)
+
+This was the mockup for what I would build, according to the client's specifications. The UI is pretty similar, but the use of custom fonts and colours I think make a positive difference.
+![mockup](https://github.com/kwubbenhorst/weather-dashboard/assets/140316693/6039adde-faca-467e-a6e0-8b84acf7ea12)
+
+
+## 
+Credits
 
 Karla Wubbenhorst built out this application from scratch with the aid of component libraries such as bootstrap and googlefonts. JQuery syntax is mainly used for selectors and methods. Many methods had to be researched in the MDN or W3Schools documentation. The tutorial called Asynchronous JavaScript Course (Async/Await, Promises, Callbacks) by FreeCodeCamp.org on youtube was essential for gaining an understanding of promises. I also received debugging help from Spider Forrest on AskBCS and Armando Osario, my EdX bootcamp tutor. Without their help I doubt the previous histories list would be rendering even now.       
 
