@@ -4,26 +4,44 @@ var defaultCity = {name: 'Guelph', lat: 43.5460516, lon: -80.2493276};
 var prevCities;
 
 $(document).ready(function () {
-    function init() {
+  // Function to clear the previous cities list
+  function clearPrevCities() {
+    // Clear the list in the DOM
+    $("#prev-cities-list").empty();
+    // Clear the list in local storage
+    localStorage.setItem("prevCities", JSON.stringify([]));
+    // Render the updated list
+    renderPrevCities();
+}
+
+// Function to initialize the application
+function init() {
     // Retrieve prevCitiesList from local storage
     prevCities = JSON.parse(localStorage.getItem("prevCities")) || [];
-  
+
     // Render the prevCities list
     renderPrevCities();
 
-    $("#search").click(function(e) {
+    $("#search").click(function (e) {
         e.preventDefault();
-        var cityName = $("#input-city").val(); 
+        var cityName = $("#input-city").val();
         // Call the disambiguateCity function to get the specifiedCityName
-        disambiguateCity(cityName); 
-        });
-  
+        disambiguateCity(cityName);
+    });
+
+    // Event listener for the clear button
+    $("#clear").click(function (e) {
+        e.preventDefault();
+        // Clear the previous cities list
+        clearPrevCities();
+    });
+
     // Call getWeather for the default city (Guelph) to render current and 5-day weather
     getWeather(defaultCity);
-  }
-  
-  // Call init on page load
-  init();
+}
+
+// Call init on page load
+init();
   //Check what's in my prevCities array in local storage
   console.log(prevCities); 
 });
@@ -94,15 +112,43 @@ $(document).ready(function () {
     $(document).on("click", ".prev-city-btn", function (e) { //event delegation because the buttons don't exist until they're dynamically generated
     e.preventDefault();
     var city = $(this).val();
+    console.log("Clicked city: " + city); //check that the value is reaching the handler function 
     // Call the getWeather function with the specifiedCity
     getWeather(city);
     });
 
-//Function that gets weather and dateTimeZone data from apis and formats it for rendering by the renderWeatherData and renderFiveDayForecast functions which it calls
-function getWeather(selectedCity) {
-    var lat = selectedCity.lat;
-    var lon = selectedCity.lon;
-  
+function getWeather(cityOrSelectedCity) {
+  // Retrieve prevCities from local storage or initialize an empty array
+  prevCities = JSON.parse(localStorage.getItem("prevCities")) || [];
+
+  // Check if cityOrSelectedCity is an object with lat and lon properties
+  if (cityOrSelectedCity && typeof cityOrSelectedCity === 'object' && 'lat' in cityOrSelectedCity && 'lon' in cityOrSelectedCity) {
+      // If it's an object, directly use the provided information
+      fetchWeatherData(cityOrSelectedCity);
+  } else if (typeof cityOrSelectedCity === 'string') {
+      // If it's a string (city name), find the corresponding city object
+      var selectedCity = prevCities.find(function (city) {
+          return city.name === cityOrSelectedCity;
+      });
+
+      // Check if the selected city is found
+      if (selectedCity) {
+          // Continue with the rest of the function using the lat and lon from the found city object
+          fetchWeatherData(selectedCity);
+      } else {
+          console.error("Selected city not found in the previous cities list.");
+      }
+  } else {
+      // If it's neither an object nor a string, log an error
+      console.error("Invalid parameter passed to getWeather function.");
+  }
+}
+
+
+function fetchWeatherData(selectedCity) {
+  var lat = selectedCity.lat;
+  var lon = selectedCity.lon;
+
     var currentWeatherURL = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=' + apiKeyOWM + '&units=metric' + '&lang=en';
     var fiveDayForecastURL = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + apiKeyOWM + '&cnt=40&units=metric&lang=en';
     var currentDateTimeZoneURL = 'http://api.timezonedb.com/v2.1/get-time-zone?key=' + apiKeyTZDB + '&format=json&by=position&lat=' + lat + '&lng=' + lon;
@@ -193,11 +239,11 @@ function getWeather(selectedCity) {
   }
   
 
-function renderPrevCities() {
-  // Retrieve prevCitiesList from local storage
-  prevCities = JSON.parse(localStorage.getItem("prevCities")) || [];
+  function renderPrevCities() {
+    // Retrieve prevCitiesList from local storage
+    prevCities = JSON.parse(localStorage.getItem("prevCities")) || [];
     console.log("Rendering previous cities."); // Check if this line is reached
-    
+  
     // Select the ul element to append the list of previous cities
     var prevCitiesList = $("#prev-cities-list");
   
@@ -206,14 +252,21 @@ function renderPrevCities() {
   
     // Loop through the previous cities and create li and button elements
     prevCities.forEach(function (city, index) {
-        var listItem = $("<li>").addClass("prev-city-item"); // Add a specific class
-        var button = $("<button>").addClass("prev-city-btn").attr("value", city.name).text(city.name + ", " + city.state + ", " + city.country);
-        listItem.append(button);
-        prevCitiesList.append(listItem);
+      var listItem = $("<li>").addClass("prev-city-item"); // Add a specific class
+  
+      var button = $("<button>")
+        .addClass("prev-city-btn")
+        .addClass("color-" + (index % 10)) // Add the color class
+        .addClass("dynamic")
+        .attr("value", city.name)
+        .text(city.name + ", " + city.state + ", " + city.country);
+  
+      listItem.append(button);
+      prevCitiesList.append(listItem);
     });
+    console.log("Finished rendering previous cities."); // Check if this line is reached
   }
-  console.log("Finished rendering previous cities."); // Check if this line is reached
-
+  
 
 
 function renderWeatherData(selectedCity, currentDateTimeZone, weatherData) {

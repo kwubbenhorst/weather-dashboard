@@ -22,26 +22,28 @@
     <main class="flex-row justify-space-between">
         <div class="row p-2">             
             <!-- Left column - search-form and prev-cities list -->
-            <div class="col-sm-12 col-md-3 left-panel order-md-1">
-                <div class="card" id="search-form">
-                    <form id="user-form">
-                        <h2 class="form-label">Search For a City</h2>
-                        <input type="text" name="city" class="form-input" id="input-city" placeholder="Type your city name in here" />
-                        <button type="submit" class="search-btn" id="search">Search</button>
-                    </form>
-                </div>
-                
-                <hr>
-
-                <div class="row prev-cities-list mt-3">
-                    <div class="col-sm-12">
-                        <!-- Will push text from local storage and append list items from within js-->
-                        <ul class="list-group" id="prev-cities-list">
-                            <!-- List items will be dynamically generated and appended here -->
-                        </ul>
-                    </div>
+        <div class="col-sm-12 col-md-3 left-panel order-md-1">
+            <div class="card" id="search-form">
+                <form id="user-form">
+                    <h2 class="form-label">Search For a City</h2>
+                    <input type="text" name="city" class="form-input" id="input-city" placeholder="Type your city name in here" />
+                    <button type="submit" class="search-btn" id="search">Search</button>
+                </form>
+            </div>
+            
+            <hr>
+            
+            <h2 class="form-label" id="previous-searches">Previous Searches</h2>
+            <div class="row prev-cities-list mt-3">
+                <div class="col-sm-12">
+                    <!-- Will push text from local storage and append list items from within js-->
+                    <ul class="list-group" id="prev-cities-list">
+                        <!-- List items will be dynamically generated and appended here -->
+                    </ul>
                 </div>
             </div>
+            <button class="search-btn" id="clear">Clear</button>
+        </div>
 
             <!-- Right column -- current-searched-weather and 5-day-forecast -->
             <div class="col-sm-12 col-md-9 order-md-2 gx-5">

@@ -9,7 +9,6 @@
     --headergradleft: #465AB8;
     --headergradright: #261460;
     --search-btn-bg: #6991E3;
-    --prev-cities-btn-bg: #AEAEAF;
     --white: #FFFFFF;
     --black: #191919;
     --dark-card-bg: #323D4F;
@@ -87,6 +86,70 @@
     transform: translate(-1px, -1px);
   }
 
+  #clear {
+    font-size: 1.3rem;
+    text-decoration: none;
+    padding: 6px 25px;
+    width: 100%;
+    margin: 15px 0;
+    border-radius: var(--border-radius);
+    color: var(--white);
+    background-color: var(--search-btn-bg);
+    box-shadow: 3px 3px var(--dark);
+}
+
+.list-group {
+    padding: 0;
+    list-style: none;
+    border-radius: var(--border-radius);
+    background-color: var(--light-dark);
+    color: var(--primary);
+    text-decoration: none;
+    color: "white";
+    border-radius: "5px";
+    margin: "5px";
+    padding: "8px 12px";
+    font-size: "1.3rem";
+  }
+  
+  .list-group-item {
+    margin-bottom: 10px;
+    padding: 1.5%;
+  }
+  
+  .list-item:hover {
+    background-color: var(--dark);
+  }
+
+  .prev-city-btn {
+    display: block;
+  }
+
+  .prev-city-btn.dynamic {
+    color: white;
+    font-size: 1.3rem;
+    margin: 5px; 
+    padding: 8px 12px;
+    align-items: center;
+    text-align: center;
+    border-radius: var(--border-radius);
+    border: orangered;
+    width: 100%; 
+  }
+
+  /* Add a class for each gradient color */
+.prev-city-btn.color-0 { background-color: #FAD02E; border-color: darkred; }
+.prev-city-btn.color-1 { background-color: #F9CA24; border-color: darkred; }
+.prev-city-btn.color-2 { background-color: #F4D03F; border-color: darkred; }
+.prev-city-btn.color-3 { background-color: #F5B041; border-color: darkred; }
+.prev-city-btn.color-4 { background-color: #EB984E; border-color: darkred; }
+.prev-city-btn.color-5 { background-color: #E59866; border-color: darkred; }
+.prev-city-btn.color-6 { background-color: #DC7633; border-color: darkred; }
+.prev-city-btn.color-7 { background-color: #D68910; border-color: darkred; }
+.prev-city-btn.color-8 { background-color: #CA6F1E; border-color: darkred; }
+.prev-city-btn.color-9 { background-color: #BA4A00; border-color: darkred; }
+
+
   .current-weather-container {
     margin-top: 65px;
     border: 2px solid var(--headergradleft);
@@ -105,35 +168,7 @@
     border: 2px solid var(--white);
   }
   
-  .list-group {
-    padding: 0;
-    list-style: none;
-  }
   
-  .list-group-item {
-    margin-bottom: 10px;
-    padding: 1.5%;
-    border-radius: var(--border-radius);
-    background-color: var(--light-dark);
-    color: var(--primary);
-    text-decoration: none;
-  }
-  
-  .list-item:hover {
-    background-color: var(--dark);
-  }
-
-  .prev-city-item {
-    display: block;
-    background-color: red;
-    color: black;
-}
-
-  .prev-city-btn {
-    display: block;
-    background-color: blue;
-    color: white;
-  }
   
   .status-icon {
     padding: 2px 5px;
